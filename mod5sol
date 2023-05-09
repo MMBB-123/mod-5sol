@@ -1,0 +1,14 @@
+function loadRandomCategory() {
+  // Retrieve the list of categories from the server
+  fetch('https://restaurant.example.com/categories')
+    .then(response => response.json())
+    .then(categories => {
+      // Choose a random category
+      const randomIndex = Math.floor(Math.random() * categories.length);
+      const randomCategory = categories[randomIndex];
+      
+      // Load the menu items for the random category
+      $dc.loadMenuItems(randomCategory.short_name);
+    })
+    .catch(error => console.error(error));
+}
